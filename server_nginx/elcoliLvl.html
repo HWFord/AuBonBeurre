@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+
+    <!-- IMLPORT CHART.JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- IMLPORT BOOTSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+    <link href="/assets/style.css" rel="stylesheet">
+  </head>
+  
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/index.html">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Parameters
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/cisternTemperature.html">Cistern temperature</a>
+            <a class="dropdown-item" href="/ambientTemperature.html">Ambient temperature</a>
+            <a class="dropdown-item" href="/cisternMilkWeight.html">Cistern milk weight</a>
+            <a class="dropdown-item" href="/finishProductWeight.html">Finish product weight</a>
+            <a class="dropdown-item" href="/ph.html">ph</a>
+            <a class="dropdown-item" href="/kplus.html">k+</a>
+            <a class="dropdown-item" href="/nacl.html">nacl</a>
+            <a class="dropdown-item" href="/salmonellaLvl.html">Salmonella lvl</a>
+            <a class="dropdown-item" href="/elcoliLvl.html">Elcoli lvl</a>
+            <a class="dropdown-item" href="/listeriaLvl.html">Listeria lvl</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <body>
+
+     <h1>Control of elcoli level</h1>
+     <canvas id="myChart"></canvas>
+     <script>
+     var ctx = document.getElementById('myChart');
+     var myChart = new Chart(ctx, {
+         type: 'line',
+         data: {
+             labels: ['2021-09-27 11:55:00', '2021-09-27 11:56:00', '2021-09-27 11:57:00', '2021-09-27 11:58:00', '2021-09-27 11:59:00', '2021-09-27 12:00:00', ],
+             datasets: [{
+                 label: 'Unity 1',
+                 data: [39, 41, 40, 40, 38, 39],
+                 backgroundColor: [
+                     'rgba(255, 99, 132, 0.2)',
+                     'rgba(255, 99, 132, 0.2)',
+                     'rgba(255, 99, 132, 0.2)',
+                     'rgba(255, 99, 132, 0.2)',
+                     'rgba(255, 99, 132, 0.2)',
+                     'rgba(255, 99, 132, 0.2)'
+                 ],
+                 borderColor: [
+                     'rgba(255, 99, 132, 1)',
+                     'rgba(255, 99, 132, 1)',
+                     'rgba(255, 99, 132, 1)',
+                     'rgba(255, 99, 132, 1)',
+                     'rgba(255, 99, 132, 1)',
+                     'rgba(255, 99, 132, 1)'
+                 ],
+                 borderWidth: 1
+             },
+             {
+                 label: 'Unity 2',
+                 data: [36, 38, 39, 40, 39, 39],
+                 backgroundColor: [
+                     'rgba(50, 168, 82, 0.2)',
+                     'rgba(50, 168, 82, 0.2)',
+                     'rgba(50, 168, 82, 0.2)',
+                     'rgba(50, 168, 82, 0.2)',
+                     'rgba(50, 168, 82, 0.2)',
+                     'rgba(50, 168, 82, 0.2)'
+                 ],
+                 borderColor: [
+                     'rgba(50, 168, 82, 1)',
+                     'rgba(50, 168, 82, 1)',
+                     'rgba(50, 168, 82, 1)',
+                     'rgba(50, 168, 82, 1)',
+                     'rgba(50, 168, 82, 1)',
+                     'rgba(50, 168, 82, 1)'
+                 ],
+                 borderWidth: 1
+             },
+             {
+                 label: 'Unity 3',
+                 data: [43, 44, 44, 43, 41, 43],
+                 backgroundColor: [
+                     'rgba(66, 135, 245, 0.2)',
+                     'rgba(66, 135, 245, 0.2)',
+                     'rgba(66, 135, 245, 0.2)',
+                     'rgba(66, 135, 245, 0.2)',
+                     'rgba(66, 135, 245, 0.2)',
+                     'rgba(66, 135, 245, 0.2)'
+                 ],
+                 borderColor: [
+                     'rgba(66, 135, 245, 1)',
+                     'rgba(66, 135, 245, 1)',
+                     'rgba(66, 135, 245, 1)',
+                     'rgba(66, 135, 245, 1)',
+                     'rgba(66, 135, 245, 1)',
+                     'rgba(66, 135, 245, 1)'
+                 ],
+                 borderWidth: 1
+             },
+             {
+                 label: 'Unity 4',
+                 data: [39, 40, 41, 41, 39, 40],
+                 backgroundColor: [
+                     'rgba(235, 210, 52, 0.2)',
+                     'rgba(235, 210, 52, 0.2)',
+                     'rgba(235, 210, 52, 0.2)',
+                     'rgba(235, 210, 52, 0.2)',
+                     'rgba(235, 210, 52, 0.2)',
+                     'rgba(235, 210, 52, 0.2)'
+                 ],
+                 borderColor: [
+                     'rgba(235, 210, 52, 1)',
+                     'rgba(235, 210, 52, 1)',
+                     'rgba(235, 210, 52, 1)',
+                     'rgba(235, 210, 52, 1)',
+                     'rgba(235, 210, 52, 1)',
+                     'rgba(235, 210, 52, 1)'
+                 ],
+                 borderWidth: 1
+             },
+             {
+                 label: 'Unity 5',
+                 data: [38, 40, 41, 43, 44, 44],
+                 backgroundColor: [
+                     'rgba(113, 52, 235, 0.2)',
+                     'rgba(113, 52, 235, 0.2)',
+                     'rgba(113, 52, 235, 0.2)',
+                     'rgba(113, 52, 235, 0.2)',
+                     'rgba(113, 52, 235, 0.2)',
+                     'rgba(113, 52, 235, 0.2)'
+                 ],
+                 borderColor: [
+                     'rgba(113, 52, 235, 1)',
+                     'rgba(113, 52, 235, 1)',
+                     'rgba(113, 52, 235, 1)',
+                     'rgba(113, 52, 235, 1)',
+                     'rgba(113, 52, 235, 1)',
+                     'rgba(113, 52, 235, 1)'
+                 ],
+                 borderWidth: 1
+             }]
+         },
+         options: {
+             scales: {
+                 y: {
+                     beginAtZero: true
+                 }
+             }
+         }
+     });
+     </script>
+
+     
+  </body>
+</html>
