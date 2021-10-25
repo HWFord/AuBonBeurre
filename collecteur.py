@@ -6,7 +6,7 @@ import mysql.connector
 
 HEADER = 64
 PORT = 5050
-SERVER = "localhost"
+SERVER = socket.gethostname()
 ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'
 DISCONNECT_MSG = "!DISCONNECT"
@@ -14,8 +14,6 @@ DISCONNECT_MSG = "!DISCONNECT"
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(ADDR)
 
-# TODO Terminate insertSensorData method
-# TODO Créer le script sql
 def dbConnect():
     jsonFile = open("config.json", "r")
     config = json.loads(jsonFile.read())
@@ -77,6 +75,7 @@ def insertSensorData(dbConnect, sensorData: SensorData):
 def handle_client(conn, addr):
     print(f"[NEW CONNECTION] {addr} connected")
     connected = True
+    jsonData = {}
     while connected:
         msg_length = conn.recv(HEADER).decode(FORMAT)
         if msg_length:
@@ -84,10 +83,11 @@ def handle_client(conn, addr):
             msg = conn.recv(msg_length).decode(FORMAT)
             if msg == DISCONNECT_MSG:
                 connected = False
-            print(f"[{addr} {msg}]")
+            #print(f"[{addr} {msg}]")
             conn.send("Msg received".encode(FORMAT))
+            jsonData = json.loads(msg)
             sensorData = SensorData()
-            sensorData.build(msg)
+            sensorData.build(jsonData)
             insertSensorData(dbConnect(), sensorData)
     conn.close()
 
@@ -100,26 +100,28 @@ def start():
         thread.start()
         print(f"[ACTIVE CONNECTIONS] {threading.activeCount() - 1}")
 
-# Run Script
-print("[STARTING] server is starting...")
 
-""" testSensorData = SensorData()
-testSensorData.unit_id = 1
-testSensorData.sensor_id = 1
-testSensorData.sensor_type = 1
-testSensorData.cistern_temperature = 1
-testSensorData.ambient_temperature = 1
-testSensorData.cistern_milk_weight = 1
-testSensorData.finish_product_weight = 1
-testSensorData.pH = 1
-testSensorData.kplus = 1
-testSensorData.nacl = 1
-testSensorData.salmonella_lvl = 1
-testSensorData.ecoli_lvl = 1
-testSensorData.listeria_lvl = 1
-testSensorData.check_date = "2021-10-23"
-testSensorData.send_date = "2021-10-23"
-insertSensorData(dbConnect(), testSensorData) """
 start()
+""" sensor_data = {
+    "unit_id": 1,
+    "sensor_id": 1,
+    "sensor_type": 0X0000BA20,
+    "cistern_temperature": 1,
+    "ambient_temperature": 1,
+    "cistern_milk_weight": 1,
+    "finish_product_weight": 1,
+    "pH": 1,
+    "kplus": 1,
+    "nacl": 1,
+    "salmonella_lvl": 1,
+    "ecoli_lvl": 1,
+    "listeria_lvl": 1,
+    "check_date": "2021-10-23",
+    "send_date": "2021-10-23"
+}
 
+jsonData = json.dumps(sensor_data)
+jsonData = json.loads(jsonData)
+print(jsonData['unit_id'])
+"""
 

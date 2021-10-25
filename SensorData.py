@@ -18,20 +18,19 @@ class SensorData():
         self.check_date = None
         self.send_date = None
 
-    def build(self, obj):
-        obj = json.dumps(obj)
-        self.unit_id = obj.unit_id
-        self.sensor_id = obj.unit_id
-        self.sensor_type = obj.unit_id
-        self.cistern_temperature = obj.unit_id
-        self.ambient_temperature = obj.unit_id
-        self.cistern_milk_weight = obj.unit_id
-        self.finish_product_weight = obj.unit_id
-        self.pH = obj.unit_id
-        self.kplus = obj.unit_id
-        self.nacl = obj.unit_id
-        self.salmonella_lvl = obj.unit_id
-        self.ecoli_lvl = obj.unit_id
-        self.listeria_lvl = obj.unit_id
-        self.check_date = obj.unit_id
-        self.send_date = obj.unit_id
+    def build(self, jsonData):
+        self.unit_id = jsonData["unit_id"]
+        self.sensor_id = jsonData['sensor_id']
+        self.sensor_type = jsonData['sensor_type']
+        self.cistern_temperature = jsonData['cistern_temperature']
+        self.ambient_temperature = jsonData['ambient_temperature']
+        self.cistern_milk_weight = jsonData['cistern_milk_weight']
+        self.finish_product_weight = jsonData['finish_product_weight']
+        self.pH = jsonData['pH']
+        self.kplus = jsonData['kplus']
+        self.nacl = jsonData['nacl']
+        self.salmonella_lvl = jsonData['salmonella_lvl']
+        self.ecoli_lvl = jsonData['ecoli_lvl']
+        self.listeria_lvl = jsonData['listeria_lvl']
+        self.check_date = jsonData['check_date']
+        self.send_date = jsonData['send_date']
