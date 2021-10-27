@@ -1,4 +1,4 @@
-CREATE TABLE automates (
+CREATE TABLE IF NOT EXISTS automates (
 unit_id int,
 sensor_id int,
 check_date datetime,
