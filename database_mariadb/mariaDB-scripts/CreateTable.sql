@@ -1,16 +1,18 @@
-CREATE TABLE IF NOT EXISTS automates (
-unit_id int,
-sensor_id int,
-check_date datetime,
-sensor_type int,
-cistern_temperature FLOAT,
-ambient_temperature FLOAT,
-cistern_milk_weight FLOAT,
-finish_product_weight FLOAT,
-ph FLOAT,
-kplus int,
-nacl FLOAT,
-salmonella_lvl int,
-ecoli_lvl int,
-listeria_lvl int
+CREATE TABLE automates (
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  unit_id INT(11) NOT NULL,
+  sensor_id INT(11) NOT NULL,
+  sensor_type INT(11) NOT NULL,
+  cistern_temperature FLOAT NOT NULL,
+  ambient_temperature FLOAT NOT NULL,
+  cistern_milk_weight FLOAT NOT NULL,
+  finish_product_weight FLOAT NOT NULL,
+  pH FLOAT NOT NULL,
+  kplus INT(11) NOT NULL,
+  nacl FLOAT NOT NULL,
+  salmonella_lvl INT(11) NOT NULL,
+  ecoli_lvl INT(11) NOT NULL,
+  listeria_lvl INT(11) NOT NULL,
+  check_date DATETIME NOT NULL,
+  send_date DATETIME NOT NULL
 );
