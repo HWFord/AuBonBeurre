@@ -2,8 +2,13 @@ import random
 import json
 from .Unit import Unit
 
-with open('conf.json') as data:
-    unitData = json.load(data)
+#load conf file for unit IDs and sensor IDs
+confFile = './conf.json'
+unitData = []
+
+with open(confFile, 'r') as data:
+    unitData = json.loads(data.read())
+    data.close()
 
 #sensor_type = unitData["sensors"]["type"]
 #print(sensor_type)
