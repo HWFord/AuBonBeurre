@@ -1,7 +1,10 @@
 import json
 
-with open('conf.json') as data:
+unitData = []
+
+with open('./conf.json') as data:
     unitData = json.load(data)
+    data.close()
 
 unit_id = unitData["unit_id"]
 

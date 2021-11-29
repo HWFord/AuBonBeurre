@@ -3,15 +3,23 @@ import time
 import sched
 from classes.Unit import Unit
 from classes.SensorData import SensorData 
+import datetime
 
 s = sched.scheduler(time.time, time.sleep)
+confFileData = []
 
 def main():
     print("Main function")
+    now = datetime.datetime.now()
+    print ("Current date and time : ")
+    print (now.strftime("%Y-%m-%d %H:%M:%S"))
 
     #load conf file for unit IDs and sensor IDs
-    confFile = open('conf.json')
-    confFileData = json.load(confFile)
+    confFile = 'conf.json'
+
+    with open(confFile, 'r') as j:
+        confFileData = json.loads(j.read())
+        j.close()
 
     #Get unit ID and set
     unit = Unit()
@@ -31,5 +39,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-s.enter(60, 1, main)
 s.run()
